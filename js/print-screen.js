@@ -6,38 +6,64 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  View
+  View,
 } from 'react-native';
-import { observer } from 'mobx-react';
-import { observable } from 'mobx';
 import styles, { colors } from './styles';
 
-@observer
 export default class PrintScreen extends Component {
   // TODO: mobx doesn't work in React Native this way
-  @observable inputText = '';
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: '',
+      textInputHeight: 0,
+    };
+  }
 
   render() {
     return (
-      <View style={styles.view}>
+      <View style={styles.container}>
         <View style={styles.header}>
-          <Text>Print</Text>
+          <Text style={styles.headerText}>Print</Text>
         </View>
-        <KeyboardAvoidingView>
-          <Text>content print</Text>
+        <KeyboardAvoidingView
+          behavior="padding"
+          style={styles.form}
+          keyboardVerticalOffset={Platform.select({ ios: 0, android: 75 })}
+        >
           <TextInput
-            style={styles.textInput}
-            onChangeText={text => this.inputText}
-            value={this.inputText}
-          />
-          <Button
-            onPress={() => {
-              this.inputText = '';
+            style={[
+              styles.textInput,
+              { height: Math.max(35, this.state.textInputHeight + 10) },
+            ]}
+            onChangeText={text => this.setState({ text })}
+            multiline={true}
+            onContentSizeChange={event => {
+              this.setState({
+                textInputHeight: event.nativeEvent.contentSize.height,
+              });
             }}
-            title="Clear text"
-            color={colors.themeColor}
-            accessibilityLabel="Tab the button to clear the text"
+            value={this.state.text}
+            underlineColorAndroid="rgba(0,0,0,0)"
           />
+          <View>
+            <Button
+              onPress={() => {
+                console.log('on print button click');
+              }}
+              title="Print"
+            />
+            <Button
+              onPress={() => {
+                this.setState({
+                  text: '',
+                });
+              }}
+              title="Clear text"
+              color={colors.themeColor}
+              accessibilityLabel="Tab the button to clear the text"
+            />
+          </View>
         </KeyboardAvoidingView>
       </View>
     );

@@ -6,23 +6,35 @@ export const colors = {
   white: 'white',
   activeTintIOS: '#e91e63',
   activeTintAndroid: 'white',
-  tabIndicatorAndroid: 'tomato'
+  tabIndicatorAndroid: 'tomato',
 };
 
 const styles = StyleSheet.create({
-  view: {
-    flex: 1
+  container: {
+    flex: 1,
   },
   header: {
     backgroundColor: colors.themeColor,
-    height: 40
+    height: 40,
+  },
+  headerText: {
+    fontSize: 16,
+    color: 'white',
+    padding: 5,
   },
   textInput: {
-    height: 40,
-    borderColor: 'gray',
+    margin: 20,
+    marginBottom: 0,
+    paddingHorizontal: 10,
+    borderRadius: 4,
+    borderColor: '#ccc',
     borderWidth: 1,
-    margin: 10
-  }
+    fontSize: 16,
+  },
+  form: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
 });
 
 export default styles;
