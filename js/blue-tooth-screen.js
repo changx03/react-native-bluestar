@@ -7,7 +7,7 @@ export default class BlueToothScreen extends Component {
     return (
       <View style={styles.view}>
         <View style={styles.header}>
-          <Text>Print</Text>
+          <Text>Blue tooth list</Text>
         </View>
         <Text>content blue tooth list</Text>
       </View>
