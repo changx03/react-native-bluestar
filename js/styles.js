@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Constants } from 'expo';
+// import { Constants } from 'expo';
 
 export const colors = {
   themeColor: 'darkturquoise',

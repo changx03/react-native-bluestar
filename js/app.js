@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { TabNavigator } from 'react-navigation';
-import { Constants } from 'expo';
+// import { Constants } from 'expo';
 import styles, { colors } from './styles';
 import BlueToothScreen from './blue-tooth-screen';
 import PrintScreen from './print-screen';
@@ -10,12 +10,12 @@ const MainAppTabs = TabNavigator(
   {
     Print: {
       screen: PrintScreen,
-      path: ''
+      path: '',
     },
     Bluetooth: {
       screen: BlueToothScreen,
-      path: 'bluetooth'
-    }
+      path: 'bluetooth',
+    },
   },
   {
     tabBarOptions: {
@@ -23,13 +23,13 @@ const MainAppTabs = TabNavigator(
         Platform.OS === 'ios' ? colors.activeTintIOS : colors.activeTintAndroid,
       style: {
         backgroundColor: colors.themeColor,
-        paddingTop: Constants.statusBarHeight
+        // paddingTop: Constants.statusBarHeight
       },
       indicatorStyle: {
         backgroundColor: colors.tabIndicatorAndroid,
-        height: 4
-      }
-    }
+        height: 4,
+      },
+    },
   }
 );
 
